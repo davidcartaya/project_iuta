@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agencia de Viajes</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+        <div class="logo">🌍 Agencia Viajes</div>
+        <button class="hamburger" id="hamburger">☰</button>
+        <nav class="menu" id="menu">
+            <ul>
+                <li><a href="#">Todos</a></li>
+                <li><a href="#">Playa</a></li>
+                <li><a href="#">Montaña</a></li>
+                <li><a href="#">Europa</a></li>
+                <li><a href="#">Caribe</a></li>
+            </ul>
+        </nav>
+        
+        <!-- Nuevo contenedor para el carrito y el botón de cerrar sesión -->
+        <div class="header-actions">
+            <!-- Botón de Cerrar Sesión -->
+            <button class="logout-btn" id="logout-btn">
+                🚪 Cerrar Sesión
+            </button>
+            
+            <div class="cart">
+                🛒 <span id="cart-count">0</span>
+            </div>
+        </div>
+        
+    </header>
+
+    <main class="container">
+    <h1>Paquetes de Viaje</h1>
+    <section class="grid" id="paquetes-grid"></section>
+    
+        
+  </main>
+
+    <aside class="cart-sidebar" id="cart-sidebar">
+    <h2>Tu Carrito</h2>
+    <ul id="cart-items">
+          </ul>
+    <div class="cart-total">
+      Total: $<span id="cart-total">0</span>
+      <button class="btn" id="create-order-btn" style="margin-top: 1rem;">Crear Pedido</button>
+    </div>
+  </aside>
+
+        <div class="modal" id="modal">
+      <div class="modal-content">
+          <span class="close" id="close">&times;</span>
+          <h2 id="modal-title"></h2>
+          <p><strong>Ruta:</strong> <span id="modal-route"></span></p>
+          <p><strong>Fecha:</strong> <span id="modal-date"></span></p>
+          <p><strong>Precio:</strong> <span id="modal-price"></span></p>
+          <p id="modal-desc"></p>
+      </div>
+    </div>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso Empleado | Agencia Viajes</title>
+    <!-- Usamos los mismos estilos para coherencia estética -->
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+    <header class="header">
+        <div class="logo">🔑 Acceso de Empleados</div>
+    </header>
+
+    <!-- La sección de autenticación ahora vive solo aquí -->
+    <section class="auth-container" id="auth-section">
+        <h1>Bienvenido</h1>
+        
+        <!-- Formulario de Login -->
+        <form id="login-form" class="auth-form">
+            <h2>Iniciar Sesión</h2>
+            <input type="email" id="login-email" placeholder="Email" required>
+            <input type="password" id="login-password" placeholder="Contraseña" required>
+            <button type="submit" class="btn">Acceder</button>
+            <p>¿No tienes cuenta? <a href="#" id="show-register">Regístrate aquí</a></p>
+        </form>
+
+        <!-- Formulario de Registro -->
+        <form id="register-form" class="auth-form" style="display: none;">
+            <h2>Registro de Nuevo Usuario</h2>
+            <input type="text" id="register-name" placeholder="Nombre completo" required>
+            <input type="email" id="register-email" placeholder="Email" required>
+            <input type="password" id="register-password" placeholder="Contraseña" required>
+            <button type="submit" class="btn btn-secondary">Registrarse</button>
+            <p><a href="#" id="show-login">Volver al Login</a></p>
+        </form>
+
+        <p id="auth-message" class="message-box" style="display: none;"></p>
+    </section>
+
+    <!-- Script dedicado para el manejo de la autenticación/registro -->
+    <script src="login.js"></script>
+</body>
+</html>
