@@ -3,10 +3,13 @@
 // ----------------------------------------------------
 const API_BASE_URL = 'http://localhost/cartaya/'; // ¡AJUSTA ESTA URL!
 const INDEX_PAGE = 'index.html'; // Página de destino al loguearse
+const ADMIN_PAGE = 'admin.html'; // Nueva página de administrador
 
+const authForm = document.getElementById('auth-form');
+const authMessage = document.getElementById('auth-message');
+const registerBtn = document.getElementById('register-btn');
 const loginForm = document.getElementById('login-form');
 const registerForm = document.getElementById('register-form');
-const authMessage = document.getElementById('auth-message');
 
 // ----------------------------------------------------
 // UTILS DE AUTENTICACIÓN
@@ -52,11 +55,15 @@ async function handleLogin(e) {
         if (response.ok && result.success) {
             saveAuthData(result);
             showAuthMessage(`Bienvenido, ${result.nombre}! Redireccionando...`, 'success');
+            debugger
             
             // Redirección al index principal
-            setTimeout(() => {
-                window.location.href = INDEX_PAGE; 
-            }, 500);
+            if (result.rol === 'administrador') {
+                setTimeout(() => { window.location.href = ADMIN_PAGE; }, 500);
+            } else {
+                // Redirigir a la vista de usuario normal (index)
+                setTimeout(() => { window.location.href = INDEX_PAGE; }, 500);
+            }
 
         } else {
             showAuthMessage(result.error || 'Fallo en la conexión o credenciales inválidas.');
@@ -99,7 +106,7 @@ async function handleRegister(e) {
     }
 }
 
-
+if (loginForm) loginForm.addEventListener('submit', handleLogin);
 // ----------------------------------------------------
 // ASIGNACIÓN DE EVENTOS
 // ----------------------------------------------------

@@ -134,3 +134,340 @@ body { font-family: Arial, sans-serif; background: var(--bg); color: var(--text)
 .btn-cart {
   background: var(--primary);
 }
+.carousel-section {
+    padding: 2rem 1rem;
+    background: #f1f1f1; /* Fondo suave para destacar la sección */
+}
+.carousel-section h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #004d99; /* Un azul oscuro que combine con el primary */
+}
+.carousel-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.carousel-track {
+    display: flex;
+    overflow-x: scroll; /* Permite el desplazamiento horizontal */
+    scroll-snap-type: x mandatory; /* Asegura que se detenga en cada ítem */
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
+    padding: 0 1rem; /* Espacio para que no se pegue a los bordes */
+}
+
+/* Ocultar la barra de desplazamiento en la mayoría de navegadores */
+.carousel-track::-webkit-scrollbar { display: none; }
+.carousel-track { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Estilo de cada elemento del carrusel */
+.carousel-item {
+    min-width: 280px; /* Ancho fijo para 3-4 ítems visibles */
+    flex-shrink: 0;
+    scroll-snap-align: start; /* Punto de parada del scroll */
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+.carousel-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.carousel-item img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+}
+
+/* Estilos para las flechas de navegación */
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 0.75rem 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+.carousel-nav:hover {
+    opacity: 1;
+}
+.carousel-nav i {
+    font-size: 1.5rem;
+    display: block; /* Para centrar el icono */
+}
+
+.carousel-nav.prev {
+    left: 0;
+}
+.carousel-nav.next {
+    right: 0;
+}
+
+/* Asegurar que los botones dentro de la tarjeta se vean bien */
+.carousel-item .card-actions {
+    margin-top: 1rem;
+}
+#chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 5000; /* Asegura que esté por encima de todo */
+}
+
+#chat-bubble {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--primary); /* Usa el color principal del tema */
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s;
+}
+
+#chat-bubble:hover {
+    transform: scale(1.05);
+}
+
+#chat-icon {
+    font-size: 1.8rem; /* Ajuste para el icono de chat */
+}
+
+/* Ventana del Chat (Por defecto oculta) */
+#chat-window {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    width: 320px;
+    height: 400px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    /* Inicialmente oculto por JS, pero aseguramos estilos */
+    /* Este estilo se gestionará en chatbot.js para toggle */
+    display: none; 
+}
+
+/* Encabezado del Chat */
+.chat-header {
+    background: var(--primary); /* Fondo con el color principal */
+    color: #fff;
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.chat-close-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0;
+    margin-left: 0.5rem;
+}
+.chat-close-btn i {
+    font-size: 1.5rem;
+}
+
+/* Contenedor de Mensajes */
+.messages-container {
+    flex-grow: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    background: var(--bg); /* Fondo más claro como el body */
+}
+/* Estilo de la barra de desplazamiento (opcional) */
+.messages-container::-webkit-scrollbar {
+    width: 6px;
+}
+.messages-container::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+}
+
+/* Estilos de los Mensajes */
+.message {
+    max-width: 80%;
+    margin-bottom: 0.7rem;
+    padding: 0.5rem 0.7rem;
+    border-radius: 8px;
+    line-height: 1.4;
+    font-size: 0.9rem;
+}
+
+.user-message {
+    background: #e1efff; /* Tono más claro de primary para mensajes de usuario */
+    color: var(--text);
+    margin-left: auto; /* Alinea a la derecha */
+    border-bottom-right-radius: 0;
+}
+
+.bot-message {
+    background: #fff;
+    border: 1px solid var(--border);
+    color: var(--text);
+    margin-right: auto; /* Alinea a la izquierda */
+    border-bottom-left-radius: 0;
+}
+
+/* Área de Input y Botón de Enviar */
+.chat-input-area {
+    display: flex;
+    padding: 0.5rem;
+    border-top: 1px solid var(--border);
+    background: #fff;
+}
+
+.user-input-field {
+    flex-grow: 1;
+    padding: 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-right: 0.5rem;
+    font-size: 1rem;
+}
+
+.send-btn {
+    background: var(--primary); /* Color principal como en los otros botones */
+    color: #fff;
+    border: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background 0.2s;
+}
+
+.send-btn:hover {
+    background: #005fcc;
+}
+
+.send-btn i {
+    font-size: 1.2rem;
+}
+
+/* Acciones Sugeridas (Opcional, pero se ve bien) */
+.suggested-actions-container {
+    padding: 0.5rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+.suggested-action-btn {
+    background: #eee;
+    color: var(--text);
+    border: 1px solid #ccc;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+.suggested-action-btn:hover {
+    background: #ddd;
+}
+
+/* Responsive para la ventana de chat en móvil */
+@media (max-width: 500px) {
+    #chatbot-container {
+        right: 10px;
+        bottom: 10px;
+    }
+    #chat-window {
+        width: calc(100vw - 20px);
+        height: 80vh; /* Ocupa la mayor parte de la pantalla */
+        bottom: 70px;
+        right: -10px;
+    }
+}
+#chat-window {
+    /* ... estilos existentes ... */
+    display: none; /* Mantenemos este para la carga inicial */
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#chat-window.open {
+    display: flex; /* Mostrar cuando se añade la clase 'open' */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Estilos de los Mensajes */
+.message-box { /* Clase agregada en JS: 'message-box' */
+    max-width: 80%;
+    margin-bottom: 0.7rem;
+    padding: 0.5rem 0.7rem;
+    border-radius: 8px;
+    line-height: 1.4;
+    font-size: 0.9rem;
+}
+
+/* Corrección de la clase para el botón sugerido */
+.suggested-action { /* Usando 'suggested-action' del JS */
+    background: #eee;
+    color: var(--text);
+    border: 1px solid #ccc;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    font-size: 0.85rem;
+    display: inline-block; /* Asegura que se apilen correctamente */
+    transition: background 0.2s;
+}
+.suggested-action:hover {
+    background: #ddd;
+}
+
+/* Estilos para el Indicador de Escritura (Typing Indicator) */
+#typing-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0.7rem;
+    min-height: 30px;
+}
+
+.loading-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--primary);
+    border-radius: 50%;
+    margin: 0 2px;
+    animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.loading-dot:nth-child(1) { animation-delay: -0.32s; }
+.loading-dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1.0); }
+}

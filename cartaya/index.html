@@ -5,62 +5,114 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agencia de Viajes</title>
   <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
-  <header class="header">
-        <div class="logo">🌍 Agencia Viajes</div>
-        <button class="hamburger" id="hamburger">☰</button>
-        <nav class="menu" id="menu">
-            <ul>
-                <li><a href="#">Todos</a></li>
-                <li><a href="#">Playa</a></li>
-                <li><a href="#">Montaña</a></li>
-                <li><a href="#">Europa</a></li>
-                <li><a href="#">Caribe</a></li>
-            </ul>
-        </nav>
-        
-        <!-- Nuevo contenedor para el carrito y el botón de cerrar sesión -->
-        <div class="header-actions">
-            <!-- Botón de Cerrar Sesión -->
-            <button class="logout-btn" id="logout-btn">
-                🚪 Cerrar Sesión
-            </button>
-            
-            <div class="cart">
-                🛒 <span id="cart-count">0</span>
-            </div>
-        </div>
-        
-    </header>
+  <header class="header">
+    <div class="logo" id="header-logo">🌍 Agencia Viajes</div>
+        
+    <button class="hamburger" id="hamburger">☰</button>
+    <nav class="menu" id="menu">
+        <ul>
+            <li><a href="#">Todos</a></li>
+            <li><a href="#">Playa</a></li>
+            <li><a href="#">Montaña</a></li>
+            <li><a href="#">Europa</a></li>
+            <li><a href="#">Caribe</a></li>
+        </ul>
+    </nav>
+        
+    <div class="header-actions">
+        
+        <div id="logged-out-actions" class="header-action-group">
+            <a href="login.html" class="btn login-btn">🔑 Iniciar Sesión</a>
+        </div>
 
-    <main class="container">
+        <div id="logged-in-actions" class="header-action-group" style="display: none;">
+            <div class="btn logout-btn">🚪 Cerrar Sesión</div>
+            <div class="cart">
+                🛒 <span id="cart-count">0</span>
+            </div>
+        </div>
+    </div>
+        
+  </header>
+
+  <main class="container">
     <h1>Paquetes de Viaje</h1>
     <section class="grid" id="paquetes-grid"></section>
-    
-        
   </main>
 
-    <aside class="cart-sidebar" id="cart-sidebar">
+  <aside class="cart-sidebar" id="cart-sidebar">
     <h2>Tu Carrito</h2>
     <ul id="cart-items">
-          </ul>
+    </ul>
     <div class="cart-total">
       Total: $<span id="cart-total">0</span>
-      <button class="btn" id="create-order-btn" style="margin-top: 1rem;">Crear Pedido</button>
+      <button class="btn" id="create-order-btn" style="margin-top: 1rem;">Crear Pedido</button>
     </div>
   </aside>
 
-        <div class="modal" id="modal">
-      <div class="modal-content">
-          <span class="close" id="close">&times;</span>
-          <h2 id="modal-title"></h2>
-          <p><strong>Ruta:</strong> <span id="modal-route"></span></p>
-          <p><strong>Fecha:</strong> <span id="modal-date"></span></p>
-          <p><strong>Precio:</strong> <span id="modal-price"></span></p>
-          <p id="modal-desc"></p>
-      </div>
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close" id="close">&times;</span>
+      <h2 id="modal-title"></h2>
+      <p><strong>Ruta:</strong> <span id="modal-route"></span></p>
+      <p><strong>Fecha:</strong> <span id="modal-date"></span></p>
+      <p><strong>Precio:</strong> <span id="modal-price"></span></p>
+      <p id="modal-desc"></p>
     </div>
+  </div>
+  
+        <div id="chatbot-container">
+        
+        <div id="chat-bubble" class="shadow-xl">
+        <i id="chat-icon" class="ph ph-chat-text text-3xl"></i>
+    </div>
+
+        <div id="chat-window">
+        
+                <div class="chat-header">
+            <span class="chat-title">Asistente Geo 🤖</span>
+            <button id="close-chat-btn" aria-label="Cerrar chat" class="chat-close-btn">
+                <i class="ph ph-x-circle"></i>
+            </button>
+        </div>
+        
+                <div id="messages-container" class="messages-container">
+                    </div>
+        
+                <div id="suggested-actions-container" class="suggested-actions-container">
+                    </div>
+        
+                <div class="chat-input-area">
+            <input type="text" id="user-input" placeholder="Escribe tu consulta..." 
+                   class="user-input-field"
+                   aria-label="Entrada de mensaje del usuario">
+            <button id="send-btn" aria-label="Enviar mensaje" class="send-btn">
+                <i class="ph ph-paper-plane-tilt"></i>
+            </button>
+        </div>
+    </div>
+  </div>
+
+<section class="carousel-section">
+    <h2>✨ Ofertas Destacadas ✨</h2>
+    <div class="carousel-container">
+        <button class="carousel-nav prev" id="carousel-prev">
+            <i class="ph ph-caret-left"></i>
+        </button>
+        
+        <div class="carousel-track" id="carousel-track">
+            </div>
+
+        <button class="carousel-nav next" id="carousel-next">
+            <i class="ph ph-caret-right"></i>
+        </button>
+    </div>
+</section>
+  
   <script src="app.js"></script>
+    <script src="chatbot.js"></script>
 </body>
 </html>

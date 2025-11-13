@@ -2,7 +2,8 @@
 // -----------------------------------------------------------
 // 1. MANEJO DE CORS (Cross-Origin Resource Sharing)
 // -----------------------------------------------------------
-
+error_reporting(E_ERROR | E_PARSE); 
+ini_set('display_errors', 0); 
 // Permite peticiones desde cualquier origen (necesario en desarrollo local)
 header("Access-Control-Allow-Origin: *");
 // Permite los métodos que usaremos: POST para login/register/logout, y GET (para paquetes)
@@ -24,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root'); // Usuario por defecto de XAMPP
 define('DB_PASSWORD', '');     // Contraseña por defecto de XAMPP (vacía)
-define('DB_NAME', 'agencia_viajes_db'); // !!! CAMBIA ESTO AL NOMBRE REAL DE TU DB !!!
+define('DB_NAME', 'agencia_viajes_db');
 
 // Conectar a MySQL
 // Usamos el operador @ para suprimir temporalmente la salida de errores nativos de MySQLi

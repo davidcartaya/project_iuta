@@ -1,0 +1,154 @@
+/* --- ESTILOS ESPECÍFICOS PARA LA PÁGINA DE AUTENTICACIÓN --- */
+:root {
+    --primary: #0077ff; /* Azul vibrante */
+    --secondary: #28a745; /* Verde para éxito/secundario */
+    --background: #f4f7f6; /* Fondo gris claro */
+    --text: #333;
+    --border: #ddd;
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* --- ESTILO BASE (Crucial para el fondo del login/admin) --- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background); /* Fondo gris claro */
+    color: var(--text);
+    line-height: 1.6;
+}
+/* Contenedor Principal: Centrado y ancho fijo para el formulario */
+.auth-container {
+    max-width: 400px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Título de Bienvenida */
+.auth-container h1 {
+    font-size: 2rem; /* Tamaño de fuente grande */
+    color: var(--primary); /* Color primario */
+    margin-bottom: 0.5rem;
+    font-weight: 800; /* Más audaz */
+}
+
+/* Título del Formulario (Login/Registro) */
+.auth-container h2 {
+    font-size: 1.5rem;
+    color: var(--text);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--primary); /* Línea debajo para separar */
+    padding-bottom: 0.5rem;
+    display: inline-block; /* Asegura que la línea se ajuste al ancho del texto */
+}
+
+/* Formulario */
+.auth-form {
+    display: flex;
+    flex-direction: column; /* Apilar los elementos verticalmente */
+    gap: 1rem; /* Espacio entre los campos y botones */
+    margin-top: 1rem;
+}
+
+/* Estilos de los campos de entrada (Input) */
+.auth-form input[type="email"],
+.auth-form input[type="password"],
+.auth-form input[type="text"] {
+    padding: 0.8rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 100%; /* Ocupar el 100% del ancho del formulario */
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.auth-form input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(0, 119, 255, 0.2); /* Resaltar al enfocar */
+    outline: none;
+}
+
+/* Botón principal de Acceder */
+.auth-form .btn {
+    padding: 0.75rem 1rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 0.5rem; /* Espacio extra sobre el botón */
+}
+
+/* Estilo para el botón secundario (Registrarse) */
+.auth-form .btn-secondary {
+    background: #555; /* Color diferente */
+}
+.auth-form .btn-secondary:hover {
+    background: #333;
+}
+
+/* Enlaces de cambio de formulario */
+.auth-container p a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: bold;
+}
+.auth-container p a:hover {
+    text-decoration: underline;
+}
+
+.auth-form input,
+.auth-form textarea {
+    box-sizing: border-box; /* **CLAVE** para que el padding no afecte el ancho */
+}
+
+/* --- ESTILOS PARA EL MENSAJE DE NOTIFICACIÓN/ERROR --- */
+.message-box {
+    padding: 1rem;
+    margin-top: 1.5rem;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #e6ffed;
+    color: #008000;
+    border: 1px solid #b3ffc9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Clase para errores específicos (como credenciales incorrectas) */
+.message-box.error {
+    background-color: #ffe6e6; /* Rojo muy claro */
+    color: #cc0000; /* Rojo oscuro */
+    border: 1px solid #ffb3b3;
+    animation: pulse 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+.btn{
+  padding:  0.75rem 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--primary);
+  color: white;
+  transition: background-color 0.3s;
+}
+.btn:hover {
+  background-color: #0056b3;
+}
+.btn-secondary {
+  background: #555 !important;
+  margin-top: 1rem;
+}
+.btn-secondary:hover {
+  background: #333
+}
